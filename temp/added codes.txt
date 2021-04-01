@@ -1,0 +1,56 @@
+def main():
+    global driver
+#   KCI, Scopus를 이용해서 정보 추출
+
+    global kci_data
+    global scopus_data
+    global wos_data
+#     df = pd.read_excel("논문_2.xlsx", header=0, encoding="utf-8")
+#     df = pd.read_excel("PV_result_20200707.xlsx", sheets="Sheet2", header=0, encoding="utf-8")
+#     scopus_data = extract_Scopus_data(df)
+#     scopus_data.to_csv("scopus_unknown.csv", encoding="utf-8-sig")
+
+#     wos_data = extract_WoS_data(df)
+#     wos_data.to_csv("wos_unknown.csv", encoding="utf-8-sig")
+    df = pd.read_excel("전임교원 논문.xlsx", sheet_name="논문", encoding="utf-8")
+    df_author = pd.read_excel("전임교원 논문.xlsx", sheet_name="논문별 저자", encoding="utf-8")
+
+    df = data_format(df, df_author)
+
+
+#   KCI, Scopus 에 DataFrame을 넣으면 그 data에 대한 정보를 추출해주는 함수
+
+    
+    kci_data = extract_KCI_data(df)
+    kci_data.to_csv("kci_전임.csv", encoding="utf-8-sig")
+    driver.quit()
+    scopus_data = extract_Scopus_data(df)
+    scopus_data.to_csv("scopus_전임.csv", encoding="utf-8-sig")
+    driver.quit()
+    wos_data = extract_WoS_data(df)
+    wos_data.to_csv("wos_data_전임.csv", encoding="utf-8-sig")
+    driver.quit()
+
+#----------------------------------Functions----------------------------------------
+#----------------------------------Functions----------------------------------------
+#----------------------------------Functions----------------------------------------
+#----------------------------------Functions----------------------------------------
+#----------------------------------Functions----------------------------------------
+
+driver = None
+
+def data_format(df, df_author):
+    df['저자목록'] = ""
+    for i, v in enumerate(df['논문연번']):
+        for k, x in enumerate(df_author['논문연번']):
+            if v == x:
+                df['저자목록'][i] = df['저자목록'][i] + ", " + df_author['저자명'][k]
+    for i, v in enumerate(df['저자목록']):
+        df['저자목록'][i] = df['저자목록'][i][2:]
+        if df['저자역할'][i] == "corresponding author":
+            df['저자역할'][i] = "교신저자"
+        elif df['저자역할'][i] == "공동":
+            df['저자역할'][i] = "공동저자"
+    
+    return df
+    

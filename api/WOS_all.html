@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link id="themeStyle" href="https://ins2.inha.ac.kr/ITISWebCommon/Css/layout.css" rel="stylesheet" type="text/css">
+    <link id="themeStyle" href="https://ins2.inha.ac.kr/ITISWebCommon/Css/Common.css" rel="stylesheet" type="text/css">
+    <link href="https://ins2.inha.ac.kr/ITISWebCommon/Css/ITIS_Style.css" rel="stylesheet" type="text/css">
+    <link href="https://ins2.inha.ac.kr/Css/inha_color.css" rel="stylesheet" type="text/css">
+    <link href="https://ins2.inha.ac.kr/Css/inha_layout.css" rel="stylesheet" type="text/css">
+    <link id="themeLayout" href="https://portal.inha.ac.kr/ins/css/main/inha_color.css" rel="stylesheet" type="text/css">
+    <title>WOS search for Inha University</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById("startYear").value = new Date().getFullYear() - 10;
+        }
+    </script>
+</head>
+
+<body>
+    <br />
+    <div class="listStyle00" id="divKor" style="margin-left:25px;">
+        <h1 class="sTitle">인하대학교 논문 검색 서비스</h1>
+        <div class="pt_10">
+            <p>
+                <strong>
+                    <font face="Verdana, Geneva, sans-serif">
+                        <font size="2" color="#808080">Search Web of Science
+                            <sup>SM</sup>
+                        </font>
+                    </font>
+                </strong>
+                <br>
+                <form method="get" action="http://gateway.isiknowledge.com/gateway/Gateway.cgi" target="_blank">
+                    <input type="hidden" name="GWVersion" value="2">
+                    <input type="hidden" name="SrcApp" value="WEB">
+                    <input type="hidden" name="SrcAuth" value="HSB">
+                    <input type="hidden" name="DestApp" value="WOS">
+                    <input type="hidden" name="formUpdated" value="true">
+                    <input type="hidden" name="fieldCount" value="2">
+                    <input type="hidden" name="value(select1)" value="AD">
+                    <input type="hidden" name="value(hidInput1)" value="">
+                    <input type="hidden" name="value(bool_1_2)" value="AND">
+                    <input type="text" name="value(input2)" size="100" maxlength="255" value="Enter a topic to search" onfocus="this.value='';" onchange="">
+                    <input type="hidden" name="value(select2)" value="TS">
+                    <input type="hidden" name="value(hidInput2)" value="">
+                    <br/>
+                    <br/>
+                    <input type="hidden" name="period" value="Year Range"> * 검색 시작 연도:
+                    <input type="text" name="startYear" id="startYear" size="4" maxlength="4">
+                    <input type="hidden" name="DestLinkType" value="GeneralSearchSummary">
+                    <input type="submit" name="btnWS" class="btn btn-save" value="검색">
+                </form>
+            </p>
+        </div>
+    </div>
+    <div class="divStyle01 pt_10" style="margin-left:25px;margin-right:25px">
+        <table width="100%" class="TableStyle02" summary="논문 검색 안내">
+            <caption>논문 검색 안내</caption>
+            <thead>
+                <tr>
+                    <th scope="col">안내</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>본 서비스는 최근 5년간 본교 전임교원의 SCI급 국제학술지 논문을 제공하도록 설정되어 있습니다.</li>
+                            <li>단순 키워드 입력 후 검색 버튼을 클릭하시면 입력키워드에 해당하는 결과를 'Web of Science' 사이트로 연결되어 제공해드립니다.</li>
+                            <li>본 서비스는 교내에서만 제공되오니 이용에 유의해주시기 바랍니다.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+
+</html>
